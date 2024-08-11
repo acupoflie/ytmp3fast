@@ -28,7 +28,7 @@ exports.convert = asyncErrorHandler( async(req, res, next) => {
     const fetchAPI = await fetch(`https://youtube-mp3-download1.p.rapidapi.com/dl?id=${filteredUrl}`, {
         "method": "GET",
         "headers": {
-            'x-rapidapi-key': process.env.API_KEY2,
+            'x-rapidapi-key': process.env.API_KEY,
             'x-rapidapi-host': process.env.API_HOST
         }
     })
