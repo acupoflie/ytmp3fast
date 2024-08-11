@@ -2,6 +2,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json())
+
 // FOR HANDLING ERRORS
 const globalErrorHandler = require('./controllers/errorController')
 const CustomError = require('./utils/CustomError')

@@ -3,6 +3,6 @@ const convertController = require('../controllers/convertController')
 
 const router = express.Router()
 
-router.route('/:id').get(convertController.convert)
+router.route('/').post(convertController.convert)
 
 module.exports=router
