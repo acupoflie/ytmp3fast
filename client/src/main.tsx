@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+import Logo from "./Logo.tsx";
 import Center from "./center.tsx";
-import Bottom from "./bottom.tsx";
+import Text from "./text.tsx";
 import "./index.css";
+import Footer from "./footer.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
+    <Logo />
     <Center />
-    <Bottom />
+    <Text />
+    <Footer />
   </React.StrictMode>
 );

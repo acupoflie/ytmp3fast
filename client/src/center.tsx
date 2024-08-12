@@ -3,7 +3,7 @@ import "./App.css";
 function Center() {
   return (
     <>
-      <form className="bg-zinc-800 w-auto text-white  border-t-2 border-t-[#0085ff] rounded-[3px] mx-auto mb-[30px] p-[15px]">
+      <form className="bg-zinc-800 w-full text-white  border-t-2 border-t-[#0085ff] rounded-[3px] mx-auto mb-[30px] p-[15px]">
         <div>Please insert a valid YouTube video URL</div>
         <div>
           <input
