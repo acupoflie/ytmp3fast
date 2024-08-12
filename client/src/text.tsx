@@ -18,7 +18,9 @@ function Text() {
       <div className="flex justify-center items-center mb-5 w-full">
         <p className="text-center max-w-2xl mx-4">
           1. Open YouTube.com and search for the video you would like to
-          download. 2. When you find the video, click on it and wait until it
+          download. 
+          <br></br>
+          2. When you find the video, click on it and wait until it
           starts playing. Then, just copy the video URL from your browser
           address bar. 3. Open YTMP3 and paste the video URL in our converter.
           After that, you will be able to choose the download format. You can
