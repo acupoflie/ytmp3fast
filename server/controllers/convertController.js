@@ -1,5 +1,7 @@
 const asyncErrorHandler = require('../utils/asyncErrorHandler')
 const CustomError = require('../utils/CustomError')
+const ytdl = require('@distube/ytdl-core')
+const fs = require('fs')
 
 const filterUrl = (url) => {
     if(url.includes('youtube.com') || url.includes('https://youtube.com')) {
@@ -25,25 +27,29 @@ exports.convert = asyncErrorHandler( async(req, res, next) => {
     const videoUrl = req.body.url
     const filteredUrl = filterUrl(videoUrl)
 
-    const fetchAPI = await fetch(`https://youtube-mp3-download1.p.rapidapi.com/dl?id=${filteredUrl}`, {
-        "method": "GET",
-        "headers": {
-            'x-rapidapi-key': process.env.API_KEY,
-            'x-rapidapi-host': process.env.API_HOST
-        }
-    })
+    const agent = ytdl.createAgent(JSON.parse(fs.readFileSync("./cookies.json")))
 
-    const fetchResponse = await fetchAPI.json();
+    ytdl('https://youtu.be/Z7shb-2SxXM?si=v_aySPoNrRtDN5SN', {filter: "audioonly"}).pipe(fs.createWriteStream('./output/music.mp3'))
+    res.status(200).json({status: "blabla"})
+    // const fetchAPI = await fetch(`https://youtube-mp3-download1.p.rapidapi.com/dl?id=${filteredUrl}`, {
+    //     "method": "GET",
+    //     "headers": {
+    //         'x-rapidapi-key': process.env.API_KEY,
+    //         'x-rapidapi-host': process.env.API_HOST
+    //     }
+    // })
 
-    if(fetchResponse.status === 'ok') {
-        res.status(200).json({
-            status: "success",
-            url: fetchResponse.link
-        })
-    } else {
-        res.status(400).json({
-            status: "fail"
-        })
-    }
+    // const fetchResponse = await fetchAPI.json();
+
+    // if(fetchResponse.status === 'ok') {
+    //     res.status(200).json({
+    //         status: "success",
+    //         url: fetchResponse.link
+    //     })
+    // } else {
+    //     res.status(400).json({
+    //         status: "fail"
+    //     })
+    // }
 
 })
