@@ -2,6 +2,8 @@ const asyncErrorHandler = require('../utils/asyncErrorHandler')
 const CustomError = require('../utils/CustomError')
 const ytdl = require('@distube/ytdl-core')
 const fs = require('fs')
+const path = require('path')
+const mysql = require('mysql2')
 
 const filterUrl = (url) => {
     if(url.includes('youtube.com') || url.includes('https://youtube.com')) {
@@ -24,13 +26,32 @@ const filterUrl = (url) => {
 
 exports.convert = asyncErrorHandler( async(req, res, next) => {
 
-    const videoUrl = req.body.url
-    const filteredUrl = filterUrl(videoUrl)
+    const videoUrl = req.params.url
+
+    if(!ytdl.validateURL(videoUrl)) {
+        res.status(400).json({
+            status: 'fail',
+            message: 'Invalid url.'
+        })
+    }
+
+    const fileName = Date.now() + '.mp3'
+    const filePath = path.join(__dirname, '../output/', fileName)
 
     const agent = ytdl.createAgent(JSON.parse(fs.readFileSync("./cookies.json")))
+    ytdl(videourl, {filter: 'audioonly'}).pipe(fs.createWriteStream(filePath))
 
-    ytdl('https://youtu.be/Z7shb-2SxXM?si=v_aySPoNrRtDN5SN', {filter: "audioonly"}).pipe(fs.createWriteStream('./output/music.mp3'))
     res.status(200).json({status: "blabla"})
+
+
+
+
+
+
+
+
+    /* WORKING WITH RAPID API */
+
     // const fetchAPI = await fetch(`https://youtube-mp3-download1.p.rapidapi.com/dl?id=${filteredUrl}`, {
     //     "method": "GET",
     //     "headers": {
