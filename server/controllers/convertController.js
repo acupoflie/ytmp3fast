@@ -26,7 +26,7 @@ const filterUrl = (url) => {
 
 exports.convert = asyncErrorHandler( async(req, res, next) => {
 
-    const videoUrl = req.params.url
+    const videoUrl = req.body.url
 
     if(!ytdl.validateURL(videoUrl)) {
         res.status(400).json({
