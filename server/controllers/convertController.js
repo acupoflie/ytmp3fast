@@ -66,7 +66,6 @@ exports.serve = asyncErrorHandler(async(req, res, next) => {
     console.log(filePath)
 
     if(fs.existsSync(filePath)) {
-        res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
         res.download(filePath)
     } else {
         res.status(404).json({message: 'File not found'});
