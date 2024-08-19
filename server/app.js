@@ -11,7 +11,7 @@ const CustomError = require('./utils/CustomError')
 // ROUTERS
 const convertRouter = require('./routers/convertRouter')
 
-app.use('/convert', convertRouter)
+app.use('/api', convertRouter)
 
 // USING ERROR HANDLERS
 app.use('*', (req, res, next) => {
