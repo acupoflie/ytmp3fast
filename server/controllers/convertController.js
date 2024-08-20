@@ -3,12 +3,6 @@ const CustomError = require('../utils/CustomError')
 const ytdl = require('@distube/ytdl-core')
 const fs = require('fs')
 const path = require('path')
-const mysql = require('mysql2')
-const crypto = require('crypto')
-
-function generateRandomFileName() {
-    return crypto.randomBytes(16).toString('hex') + '.mp3';
-}
 
 exports.convert = asyncErrorHandler( async(req, res, next) => {
 
