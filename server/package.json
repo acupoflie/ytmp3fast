@@ -13,6 +13,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "https-proxy-agent": "^7.0.5",
+    "tunnel": "^0.0.6",
     "ytdl-core": "^4.11.5"
   },
   "devDependencies": {
